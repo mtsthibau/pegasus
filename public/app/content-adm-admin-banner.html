@@ -1,0 +1,167 @@
+<div class="col-md-12" ng-controller="contentAdminAdminBannerCtrl as c">
+
+    <div sidebaradmadmin="items" ng-controller="sidebarAdmAdminCtrl"></div>
+
+    <div class="col-md-9">
+        <button class="btn btn-green btn-nova-categoria" type="button" data-toggle="modal"
+                data-target="#cadastrarBanner"
+                data-whatever="Cadastrar">
+            <span class="glyphicon glyphicon-plus"></span> cadastrar
+        </button>
+
+        <h2>Lista de Banners</h2>
+        <div class="panel panel-default">
+            <!-- Table -->
+            <table class="table">
+                <tr>
+                    <td class="col-lg-1 col-md-1"><b>#</b></td>
+                    <td class="col-lg-5 col-md-5"><b>Nome</b></td>
+                    <td class="col-lg-4 col-md-4 hidden-sm hidden-xs"><b>Arquivo</b></td>
+                    <td class="col-lg-1 col-md-1"><b>Editar</b></td>
+                    <td class="col-lg-1 col-md-1"><b>Excluir</b></td>
+                </tr>
+                <tr ng-repeat="b in c.banners | orderBy:'data.banner'">
+                    <td class="col-lg-1 col-md-1"><b>{{$index + 1}}</b></td>
+                    <td class="col-lg-1 col-md-1 hidden-sm hidden-xs">{{b.data.titulo | limitTo:60}}</td>
+                    <td class="col-lg-1 col-md-1">{{b.data.banner | limitTo:40}}</td>
+                    <td class="col-lg-1 col-md-1">
+                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#editarBanner"
+                                ng-click="c.alterarBanner(b)"><span
+                                class="glyphicon glyphicon-edit"></span></button>
+                    </td>
+                    <td class="col-lg-1 col-md-1">
+                        <button class="btn btn-danger" ng-click="c.removeBanner(b)"><span
+                                class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!------------------------------CADASTRO---------------------------->
+        <div class="modal fade" id="cadastrarBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title">Cadastrar - {{c.novoBanner.data.titulo | limitTo:50}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form name="banner" novalidate>
+                            <div class="col-lg-12">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Arquivo com extensão<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nome<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Descrição<label class="requerido"> *</label></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.banner"
+                                               placeholder="Escolha uma imagem para o banner.">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.titulo"
+                                               placeholder="Digite o nome do novo banner.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.descricao"
+                                               placeholder="Descreva o novo banner.">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="">
+                        <blockquote class="blockquote">
+                        <footer>Campos obrigatórios<span class="requerido"> *</span></footer>
+                        </blockquote>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button class="btn-green" style="float: left;" ng-click="c.salvarBanner()">Salvar</button>
+                                <button type="reset" class="btn-white" ng-click="banner.$setPristine()">Limpar</button>
+                                <button class="btn-white" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------EDITAR---------------------------->
+        <div class="modal fade" id="editarBanner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title">Editar - {{c.novoBanner.data.titulo | limitTo:50}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form name="banner" novalidate>
+                            <div class="col-lg-12">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Arquivo com extensão<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nome<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Descrição<label class="requerido"> *</label></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.banner"
+                                               placeholder="Escolha uma imagem para o banner.">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.titulo"
+                                               placeholder="Digite o nome do novo banner.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoBanner.data.descricao"
+                                               placeholder="Descreva o novo banner.">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="">
+                            <blockquote class="blockquote">
+                                <footer>Campos obrigatórios<span class="requerido"> *</span></footer>
+                            </blockquote>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button class="btn-green" style="float: left;" ng-click="c.salvarBanner()">Salvar</button>
+                                <button type="reset" class="btn-white" ng-click="banner.$setPristine()">Limpar</button>
+                                <button class="btn-white" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-10 col-xs-12" style="margin-bottom: 285px;"></div>
+
+<script>
+    $('#cadastrarBanner').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+    $('#editarBanner').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>

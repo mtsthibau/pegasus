@@ -1,0 +1,47 @@
+<div ng-controller="taskCtrl as c">
+    <li class="list-group-item list-group-item-heading list-group-item-warning">
+        <h4>{{c.task.caption}}</h4>
+    </li>
+
+    <div ui-view></div>
+
+    <div class="primary-action">
+        <button class="btn btn-warning" ng-click="c.done()"><span class="fa fa-check fa-2x"></span>
+        </button>
+    </div>
+
+    <div class="secondary-action">
+        <button class="btn btn-default" data-toggle="modal" data-target="#myModal"><span
+                class="fa fa-ellipsis-v fa-2x"></span></button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{c.task.caption}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <button class="alert alert-success btn-block" ng-click="c.save()">
+                        <i class="fa fa-save fa-3x"></i>
+                        <h4>Gravar e continuar depois...</h4>
+                    </button>
+
+                    <button class="alert alert-danger btn-block" data-dismiss="modal">
+                        <span class="fa fa-remove fa-3x"></span>
+                        <h4>Rejeitar e voltar a atividade para o passo anterior...</h4>
+                    </button>
+
+
+                </div>
+                <!--<div class="modal-footer">-->
+                <!-- -->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>

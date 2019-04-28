@@ -1,0 +1,40 @@
+<div class="col-md-12">
+    <div class="col-md-4">
+        <!--espaço-->
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-green" ng-controller="contentLogin as c">
+            <div class="panel-heading"><h3>{{c.tituloPagina}}</h3></div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>{{c.inputEmail}} <label class="requerido">{{c.required}}</label></label>
+                    <input type="text" class="form-control" ng-model="c.novaSenha.data.email"
+                           placeholder="Confirme seu E-mail">
+                </div>
+                <div class="form-group">
+                    <label>{{c.inputSenha}} <label class="requerido">{{c.required}}</label></label>
+                    <input type="text" class="form-control" ng-model="c.novaSenha.data.senha"
+                           placeholder="Digite uma nova senha.">
+                </div>
+                <div class="form-group">
+                    <label> {{c.inputSenhaConf}}<label class="requerido">{{c.required}}</label></label>
+                    <input type="text" class="form-control" ng-model="c.novaSenha.data.senhaConf"
+                           placeholder="Confirme a senha digitada anteriormente.">
+                </div>
+                <button class="btn-green" style="float: left;" ng-click="c.salvarSenha()">{{c.btnSalvar}}</button>
+
+                <blockquote class="blockquote-reverse">
+                    <footer><span class="requerido">{{c.required}}</span> {{c.legenda}}</footer>
+                </blockquote>
+            </div>
+            <div class="panel-footer">
+                {{c.obs}}
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <!--espaço-->
+    </div>
+</div>

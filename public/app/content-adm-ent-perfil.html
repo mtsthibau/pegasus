@@ -1,0 +1,75 @@
+<div class="col-md-12" ng-controller="contentAdmEntPerfilCtrl as c">
+
+    <div sidebaradmadmin="items" ng-controller="sidebarAdmEntCtrl"></div>
+
+    <div class="col-md-9">
+        <h2>Perfil</h2>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                    <img src="../IMG/sexy-halloween2.gif" alt="...">
+                    <div class="caption">
+                        <h3>Babi Entregadora Sexy</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse maximus justo at arcu
+                            varius mollis. Nulla facilisi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-8 col-lg-8">
+                <div class="col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Nome<label class="requerido"> *</label></label>
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail<label class="requerido"> *</label></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição<label class="requerido"> *</label></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Senha.<label class="requerido"> *</label></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm.<label class="requerido"> *</label></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                       <div class="form-group">
+                            <input type="text" class="form-control" ng-model="c.novoPerfil.data.nome"
+                                   placeholder="Digite o nome do novo banner.">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="c.novoPerfil.data.email"
+                                   placeholder="Digite o nome do novo banner.">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="c.novoPerfil.data.senha"
+                                   placeholder="Descreva o novo banner.">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="c.novoPerfil.data.senha"
+                                   placeholder="Descreva o novo banner.">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="c.novoPerfil.data.senhaConf"
+                                   placeholder="Descreva o novo banner.">
+                        </div>
+                        <button class="btn btn-success">Salvar</button>
+                        <button class="btn btn-default">Limpar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#cadastrarPerfil').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+    $('#editarPerfil').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>

@@ -1,0 +1,28 @@
+<div ng-controller="processFormCtrl as c">
+    <li class="list-group-item">
+        <dl-text-editor name="caption" text="Nome" model="c.inst.data.caption"></dl-text-editor>
+        <dl-memo-editor name="description" text="Descrição" model="c.inst.data.description"></dl-memo-editor>
+        <dl-text-editor name="name" text="Código" model="c.inst.data.name"></dl-text-editor>
+        <dl-text-editor name="plugin" text="Módulo" model="c.inst.data.plugin"></dl-text-editor>
+    </li>
+    <br/>
+    <li class="list-group-item list-group-item-heading">
+        <h4>Objetos</h4>
+    </li>
+    <li class="list-group-item" ng-repeat="i in c.inst.data.items">
+
+        <div class="pull-right">
+            <h5>#{{$index + 1}}</h5>
+        </div>
+
+        <dl-text-editor name="iCaption" text="Nome" model="i.caption"></dl-text-editor>
+        <dl-text-editor name="iName" text="Código" model="i.name"></dl-text-editor>
+    </li>
+    <div class="">
+        <h5 class="control-label"></h5>
+
+        <div class="">
+            <button class="btn btn-primary" ng-click="c.addItem()"><span class="fa fa-plus"></span></button>
+        </div>
+    </div>
+</div>

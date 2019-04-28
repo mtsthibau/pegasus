@@ -1,0 +1,11 @@
+<div ng-controller="processViewCtrl as c" ng-show="c.items.length > 0">
+    <li class="list-group-item" ng-repeat="p in c.items">
+        <a href="javascript: void(0)" class="pull-right" ng-click="c.delete(p)"><span
+                class="fa fa-remove"></span></a>
+        <a href="#/config/process/{{p.id}}">
+            <h4>{{p.data.caption}}<br>
+                <small>{{p.data.description}}</small>
+            </h4>
+        </a>
+    </li>
+</div>

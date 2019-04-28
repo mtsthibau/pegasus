@@ -1,0 +1,71 @@
+<div ng-controller="rootCtrl as c">
+    <div class="container-fluid">
+        <div class="row">
+
+            <!------------------------- MENU ----------------------------->
+            <header class="col-lg-12 col-md-12 col-sm-12 barra-topo">
+                <div class="col-lg-2 col-md-3 col-xs-2 logo">
+                    <a href="#content-home"><img src="../IMG/logo.png"></a>
+                </div>
+                <div class="col-lg-10 col-md-9 col-xs-12 login">
+                    <ul>
+                        <li class="menuContato" ng-repeat="i in c.categorias">
+                            <a href="#/{{i.data.titulo}}" class="text-uppercase">{{i.data.titulo}}</a>
+                        </li>
+                    </ul>
+                    <a href="#login" class="btn btn-orange pull-right"><span class="fa fa-sign-in"></span> Entrar</a>
+                </div>
+                <div class="col-xs-10 hidden-lg hidden-md pull-right">
+                    <button class="btn btn-lg btn-categorias-celular glyphicon glyphicon-list" type="button"
+                            data-toggle="collapse"
+                            data-target="#collapseMenuCel"
+                            aria-expanded="false" aria-controls="collapseMenuCel"></button>
+
+                    <div class="collapse pull-left" id="collapseMenuCel">
+
+                        <div class="col-sm-2 col-xs-2" role="navigation">
+                            <ul class="nav navbar">
+                                <li role="presentation" class="col-md-1 col-xs-1 col-sm-1 menuContato"
+                                    ng-repeat="i in c.categorias">
+                                    <a href="#{{i.data.titulo}}" class="text-uppercase">{{i.data.titulo}}</a>
+                                </li>
+                                <li class="col-md-1 col-xs-1 col-sm-1 menuContato">
+                                    <a href="#login" class="btn btn-orange"><span class="fa fa-sign-in"></span> LOGON</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!------------------------ VIEWS CONTEÚDOS -------------------->
+            <div ui-view class="content" style="margin-top: 100px;"></div>
+        </div>
+    </div>
+    <!----------------------------- FOOTER -------------------------->
+    <footer>
+        <!--COPYRIGHT-->
+        <div class="col-lg-12 col-md-12 col-xs-12 rodape-copy">
+            <h6>© Copyright 2016 | Pegasus Softwares. Todos os direitos reservados.
+                <a href="#content-home"><img src="../IMG/logo_black.png" class="logo-rodape"></a>
+            </h6>
+        </div>
+    </footer>
+</div>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$(function () {
+    $('[data-toggle="popover"]').popover({
+        html: true,
+//            content: '<a href="#myModalLogin"></a>',
+        content: '<a href="#ajuda"></a>',
+    });
+})
+</script>

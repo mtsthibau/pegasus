@@ -1,0 +1,343 @@
+<div class="col-md-12" ng-controller="contentAdmAdminEntregadorCtrl as c">
+
+    <div sidebaradmadmin="items" ng-controller="sidebarAdmAdminCtrl"></div>
+
+    <div class="col-md-9">
+        <button class="btn btn-green btn-nova-categoria" type="button" data-toggle="modal"
+                data-target="#cadastrarEntregador"
+                data-whatever="Cadastrar">
+            <span class="glyphicon glyphicon-plus"></span> cadastrar
+        </button>
+
+        <h2>Lista de Entregadores</h2>
+
+        <div class="panel panel-default">
+            <!-- Table -->
+            <table class="table">
+                <tr>
+                    <td class="col-lg-1 col-md-1"><b>#</b></td>
+                    <td class="col-lg-5 col-md-5"><b>Nome</b></td>
+                    <td class="col-lg-4 col-md-4 hidden-sm hidden-xs"><b>Arquivo</b></td>
+                    <td class="col-lg-1 col-md-1"><b>Editar</b></td>
+                    <td class="col-lg-1 col-md-1"><b>Excluir</b></td>
+                </tr>
+                <tr ng-repeat="b in c.entregadors | orderBy:'data.nome'">
+                    <td class="col-lg-1 col-md-1"><b>{{$index + 1}}</b></td>
+                    <td class="col-lg-4 col-md-4 hidden-sm hidden-xs">{{b.data.nome | limitTo:60}}</td>
+                    <td class="col-lg-1 col-md-1">{{b.data.foto | limitTo:40}}</td>
+                    <td class="col-lg-1 col-md-1">
+                        <button class="btn btn-info" type="button" ng-href="#content-adm-admin-bloquear"><span
+                                class="glyphicon glyphicon-alert"></span></button>
+                    </td>
+                    <td class="col-lg-1 col-md-1">
+                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#editarEntregador"
+                                ng-click="c.alterarEntregador(b)"><span
+                                class="glyphicon glyphicon-edit"></span></button>
+                    </td>
+                    <td class="col-lg-1 col-md-1">
+                        <button class="btn btn-danger" ng-click="c.removeEntregador(b)"><span
+                                class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!------------------------------CADASTRO---------------------------->
+        <div class="modal fade" id="cadastrarEntregador" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title">Cadastrar Entregador - {{c.novaEntregador.data.nome | limitTo:50}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form name="entregador" novalidate>
+                            <div class="col-lg-12">
+                                <h3>Entregador</h3>
+                                <hr/>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Nome<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sobrenome<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sexo<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Data de Nascimento<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>RG<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CPF<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CNH<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>MEI/CNPJ<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>E-mail<label class="requerido"> *</label></label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Formação<label class="requerido"> *</label></label>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.nome"
+                                               placeholder="Digite o nome do novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1">
+                                            <option>-</option>
+                                            <option>Feminino</option>
+                                            <option>Masculino</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h3>Veículo</h3>
+                                <hr/>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Tipo<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Placa<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Renavam<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ano<label class="requerido"> *</label></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1">
+                                            <option>-</option>
+                                            <option>Feminino</option>
+                                            <option>Masculino</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.nome"
+                                               placeholder="Digite o nome do novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h3>Endereço</h3>
+                                <hr/>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>CEP<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Número<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Complemento<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Logradouro<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bairro<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cidade<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>UF<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pais<label class="requerido"> *</label></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.entregador"
+                                               placeholder="Escolha uma imagem para o entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.entregador"
+                                               placeholder="Escolha uma imagem para o entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.entregador"
+                                               placeholder="Escolha uma imagem para o entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.titulo"
+                                               placeholder="Digite o nome do novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="sel1">
+                                            <option>-</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novaEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="">
+                            <blockquote class="blockquote">
+                                <footer>Campos obrigatórios<span class="requerido"> *</span></footer>
+                            </blockquote>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button class="btn-green" style="float: left;" ng-click="c.salvarEntregador()">Salvar
+                                </button>
+                                <button type="reset" class="btn-white" ng-click="entregador.$setPristine()">Limpar
+                                </button>
+                                <button class="btn-white" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------------EDITAR---------------------------->
+        <div class="modal fade" id="editarEntregador" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title">Editar - {{c.novoEntregador.data.foto | limitTo:50}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form name="entregador" novalidate>
+                            <div class="col-lg-12">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Arquivo com extensão<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nome<label class="requerido"> *</label></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Descrição<label class="requerido"> *</label></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoEntregador.data.foto"
+                                               placeholder="Escolha uma imagem para o entregador.">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="c.novoEntregador.data.nome"
+                                               placeholder="Digite o nome do novo entregador.">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                               ng-model="c.novoEntregador.data.descricao"
+                                               placeholder="Descreva o novo entregador.">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="">
+                            <blockquote class="blockquote">
+                                <footer>Campos obrigatórios<span class="requerido"> *</span></footer>
+                            </blockquote>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button class="btn-green" style="float: left;" ng-click="c.salvarEntregador()">Salvar
+                                </button>
+                                <button type="reset" class="btn-white" ng-click="entregador.$setPristine()">Limpar
+                                </button>
+                                <button class="btn-white" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-10 col-xs-12" style="margin-bottom: 285px;"></div>
+
+<script>
+    $('#cadastrarEntregador').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+    $('#editarEntregador').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>

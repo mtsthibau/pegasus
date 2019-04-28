@@ -1,0 +1,10 @@
+<div ng-controller="formCtrl as c">
+    <li class="list-group-item list-group-item-heading list-group-item-warning">
+        <h4>{{c.form.caption}}</h4>
+    </li>
+    <div ui-view></div>
+    <div class="primary-action">
+        <button class="btn btn-warning" ng-click="c.save()"><span class="fa fa-check fa-2x"></span>
+        </button>
+    </div>
+</div>

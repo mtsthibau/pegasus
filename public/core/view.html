@@ -1,0 +1,10 @@
+<div ng-controller="viewCtrl as c">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-heading list-group-item-warning">
+            <h4>{{c.props.caption}}</h4>
+        </li>
+        <div ui-view></div>
+    </ul>
+    <a class="btn btn-warning primary-action" href="#/{{c.props.module}}{{c.props.api}}/new"><span
+            class="fa fa-plus fa-2x"></span></a>
+</div>

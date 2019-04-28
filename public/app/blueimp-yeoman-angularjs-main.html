@@ -1,0 +1,81 @@
+<!--<div class="col-lg-7">-->
+    <!--&lt;!&ndash; The fileinput-button span is used to style the file input field as button &ndash;&gt;-->
+			<!--<span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">-->
+				<!--<i class="glyphicon glyphicon-plus"></i>-->
+				<!--<span>Add files...</span>-->
+				<!--<input type="file" name="files[]" multiple ng-disabled="disabled">-->
+			<!--</span>-->
+    <!--<button type="button" class="btn btn-primary start" ng-click="submit()" ng-hide="options.autoUpload">-->
+        <!--<i class="glyphicon glyphicon-upload"></i>-->
+        <!--<span>Start upload</span>-->
+    <!--</button>-->
+    <!--<button type="button" class="btn btn-warning cancel" ng-click="cancel()">-->
+        <!--<i class="glyphicon glyphicon-ban-circle"></i>-->
+        <!--<span>Cancel upload</span>-->
+    <!--</button>-->
+    <!--&lt;!&ndash; The global file processing state &ndash;&gt;-->
+    <!--<span class="fileupload-process"></span>-->
+<!--</div>-->
+
+<!--<form id="fileupload" method="POST" enctype="multipart/form-data" ng-controller="UploaderCtrl" file-upload="options"-->
+      <!--ng-class="{'fileupload-processing': processing() || loadingFiles}">-->
+
+    <!--&lt;!&ndash; The global progress state &ndash;&gt;-->
+    <!--<div class="col-lg-5 fade" ng-class="{in: active()}">-->
+        <!--&lt;!&ndash; The global progress bar &ndash;&gt;-->
+        <!--<div class="progress progress-striped active" file-upload-progress="progress()">-->
+            <!--<div class="progress-bar progress-bar-success" ng-style="{width: num + '%'}"></div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; The extended global progress state &ndash;&gt;-->
+        <!--<div class="progress-extended"></div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; The table listing the files available for upload/download &ndash;&gt;-->
+    <!--<table class="table table-striped files ng-cloak">-->
+        <!--<tr ng-repeat="file in queue" ng-class="{'processing': file.$processing()}">-->
+            <!--<td ng-switch on="!!file.thumbnailUrl">-->
+                <!--<div class="preview" ng-switch-when="true">-->
+                    <!--<a ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" gallery><img-->
+                            <!--ng-src="{{file.thumbnailUrl}}" alt=""></a>-->
+                <!--</div>-->
+                <!--<div class="preview" ng-switch-default file-upload-preview="file"></div>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<p class="name" ng-switch on="!!file.url">-->
+					<!--<span ng-switch-when="true" ng-switch on="!!file.thumbnailUrl">-->
+						<!--<a ng-switch-when="true" ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}"-->
+                           <!--gallery>{{file.name}}</a>-->
+						<!--<a ng-switch-default ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}">{{file.name}}</a>-->
+					<!--</span>-->
+                    <!--<span ng-switch-default>{{file.name}}</span>-->
+                <!--</p>-->
+                <!--<strong ng-show="file.error" class="error text-danger">{{file.error}}</strong>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<p class="size">{{file.size | formatFileSize}}</p>-->
+
+                <!--<div class="progress progress-striped active fade" ng-class="{pending: 'in'}[file.$state()]"-->
+                     <!--file-upload-progress="file.$progress()">-->
+                    <!--<div class="progress-bar progress-bar-success" ng-style="{width: num + '%'}"></div>-->
+                <!--</div>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<button type="button" class="btn btn-primary start" ng-click="file.$submit()"-->
+                        <!--ng-hide="!file.$submit || options.autoUpload"-->
+                        <!--ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">-->
+                    <!--<i class="glyphicon glyphicon-upload"></i>-->
+                    <!--<span>Start</span>-->
+                <!--</button>-->
+                <!--<button type="button" class="btn btn-warning cancel" ng-click="file.$cancel()" ng-hide="!file.$cancel">-->
+                    <!--<i class="glyphicon glyphicon-ban-circle"></i>-->
+                    <!--<span>Cancel</span>-->
+                <!--</button>-->
+                <!--<button ng-controller="FileDestroyCtrl" type="button" class="btn btn-danger destroy"-->
+                        <!--ng-click="file.$destroy()" ng-hide="!file.$destroy">-->
+                    <!--<i class="glyphicon glyphicon-trash"></i>-->
+                    <!--<span>Delete</span>-->
+                <!--</button>-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</form>-->

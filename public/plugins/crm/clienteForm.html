@@ -1,0 +1,22 @@
+<div ng-controller="crmClienteFormCtrl as c">
+    <li class="list-group-item">
+        <dl-text-editor name="nome" text="Nome" model="c.inst.data.nome"></dl-text-editor>
+        <dl-text-editor name="cpf" text="CPF" model="c.inst.data.cpf"></dl-text-editor>
+        <dl-text-editor name="tel" text="Telefone" model="c.inst.data.telefone"></dl-text-editor>
+        <dl-memo-editor name="observacoes" text="Observações" model="c.inst.data.observacoes"></dl-memo-editor>
+    </li>
+
+    <li class="list-group-item">
+        <h4>Contatos</h4>
+    </li>
+
+    <li class="list-group-item" ng-repeat="i in c.inst.data.contatos">
+        <a class="fa fa-remove pull-right" href="javascript: void(0)" ng-click="c.delContato(i)"></a>
+
+        <dl-text-editor name="inome" text="Nome" model="i.nome"></dl-text-editor>
+        <dl-text-editor name="itel" text="Telefone" model="i.telefone"></dl-text-editor>
+    </li>
+
+    <br>
+    <button class="btn btn-default" ng-click="c.addContato()"><span class="fa fa-plus"></span></button>
+</div>

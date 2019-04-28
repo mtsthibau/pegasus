@@ -1,0 +1,12 @@
+<ul class="list-group" ng-controller="configCtrl as c">
+    <li class="list-group-item list-group-item-heading list-group-item-warning">
+        <h4>Configurações</h4>
+    </li>
+    <li class="list-group-item" ng-repeat="i in c.items">
+        <a href="#/config/{{i.href}}">
+            <h4>{{i.name}}<br>
+                <small>{{i.desc}}</small>
+            </h4>
+        </a>
+    </li>
+</ul>

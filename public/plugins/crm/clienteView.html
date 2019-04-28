@@ -1,0 +1,11 @@
+<div ng-controller="crmClienteViewCtrl as c" ng-show="c.items.length > 0">
+    <li class="list-group-item" ng-repeat="i in c.items">
+        <a href="javascript: void(0)" class="pull-right" ng-click="c.delete(i)"><span
+                class="fa fa-remove"></span></a>
+        <a href="#/document/crm/cliente/{{i.id}}" ng-click="">
+            <h4>{{i.data.nome}}<br>
+                <small>{{i.data.observacoes}}</small>
+            </h4>
+        </a>
+    </li>
+</div>

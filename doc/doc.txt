@@ -1,0 +1,287 @@
+model/document
+process/action
+layout/report
+
+modelos/documentos
+processos/ações
+leiautes/relatorios
+
+O que voce deseja ?
+
+	Atendimento ao cliente
+		abrir solicitacao
+		[Suporte]
+		responder pesquisa de satisfacao
+		concluido!
+
+	Suporte
+		selecionar solicitacao
+		analisar nivel 1
+		analisar nivel 2
+		[Manutencao]
+		[Cprod]
+		concluido!
+
+	Manutencao
+		selecionar solicitacao
+		criar entrada
+		atualizar requisitos
+		corrigir
+		->aguardar versao
+		verificar saida
+		notificar verificacao saida da manutencao->
+		->aguardar publicacao
+		entregar
+		concluido!
+
+	Versao
+		gerar versao
+		realizar smoke test
+		notificar versao para manutencao->
+		->aguardar verificacao saida da manutencao
+		publicar versao
+		notificar publicacao->
+		concluido!
+
+----------------------------
+Configura??o
+	modulo[\submodulo]\documento
+		tela de pesquisa
+		tela de cadastro
+
+Processos 
+	iniciar
+		lista do catalogo de todo itens do "tipo: start"
+		ao selecionar um item, cria uma instancia do mesmo
+	em andamento
+		lista das instancias ainda nao concluidas (iniciados pelo usuario ou nao - filtro)
+		ao selecionar um item, listar todas os itens do "tipo: action"
+	concluidos
+		lista das instancias ja concluidas
+	agendamentos
+		lista dos itens do "tipo: event, timer"
+		historico para log do admin
+	anotacoes e anexos, por processo
+	filtros customizaveis e armazenados
+
+Tarefas (painel de notificacao, timeline)
+	em andamento
+	concluidas
+	anotacoes e anexos, por tarefa
+	
+Painel
+Relatorios
+API
+Autentica??o/Autoriza??o
+Modo produ?ao/desenvolvedor
+Modo desenvolvedor
+	importar/exportar
+	desenvolver/versionar/publicar
+----------------------------
+Tarefa
+	in
+	out
+	acoes (cancelar/salvar/concluir)
+----------------------------
+Configura??o
+	Master (1)
+	Detail (N)
+	Complex (NxN)
+	Campos (int16/32/64, string, datetime, float)
+----------------------------
+Configura??o
+
+	estabelecimento
+		nome
+		endereco
+			cep
+			logradouro
+			numero
+			complemento
+			bairro
+			municipio
+			uf
+		avatar
+		descricao
+		
+	agenda
+		estabelecimento, fk
+		nome
+		observacoes
+		disponibilidade
+			dom
+				horario, lista
+			seg
+				horario, lista
+			ter
+				horario, lista
+			qua
+				horario, lista
+			qui
+				horario, lista
+			sex
+				horario, lista
+			sab
+				horario, lista
+		feriados, lista
+		ferias, lista
+		servico, lista
+		dtInicial
+		dtFinal
+		horaInicial
+		horaFinal
+		intervaloMinimo
+
+	servico
+		nome
+		tempo (m)
+
+-------------
+
+Processo - Agendamento de Servi?o (proc1)
+
+	ID1
+	tipo: start
+	nome: agendar servi?o
+	ator: cliente
+	entrada: null
+	saida: null
+	proximo: ID2
+
+	ID2
+	tipo: task
+	nome: agendar servi?o
+	ator: cliente
+	entrada: {gui: {servico, data/hora}} - normal, lista de espera
+	saida: {idAgendamento}
+	proximo: ID3
+	
+	ID3
+	tipo: event, receive message
+	nome: aguardar lembrete de agendamento
+	ator: cliente
+	entrada: {idAgendamento}
+	saida: {idAgendamento}
+	proximo: ID4
+	
+	ID4
+	tipo: task
+	nome: confirmar agendamento
+	ator: cliente
+	entrada: {idAgendamento}
+	saida: {idAgendamento}
+	proximo: ID5
+	
+	ID5
+	tipo: task
+	nome: registrar chegada
+	ator: fornecedor
+	entrada: {idAgendamento}
+	saida: {idAgendamento}
+	proximo: ID6
+	
+	ID6
+	tipo: task
+	nome: registrar sa?da
+	ator: cliente
+	entrada: {idAgendamento, gui:{avaliacao}}
+	saida: {idAgendamento}
+	proximo: ID7
+	
+	ID7
+	tipo: end
+	nome: null
+	ator: null
+	entrada: null
+	saida: null
+	proximo: null
+	
+	ID8
+	tipo: event, timer [a cada 1 minuto]
+	nome: a cada 1 minuto
+	ator: sistema
+	entrada: null
+	saida: null
+	proximo: ID9
+	
+	ID9
+	tipo: gateway
+	nome: null
+	ator: sistema
+	entrada: null
+	saida: null
+	condicao: null
+	proximo: [ID10, ID12]
+	
+	ID10
+	tipo: task
+	nome: enviar lembrete de agendamento
+	ator: sistema
+	entrada: null
+	saida: [idAgendamento, ...]
+	proximo: ID11
+	
+	ID11
+	tipo: event, send message
+	nome: enviar lembretes de agendamento
+	ator: sistema
+	entrada: [idAgendamento, ...]
+	saida: [idAgendamento, ...]
+	proximo: null
+	
+	ID12
+	tipo: task
+	nome: finalizar agendamentos expirados
+	ator: sistema
+	entrada: null
+	saida: [idAgendamento, ...]
+	proximo: ID13
+	
+	ID13
+	tipo: event, send message
+	nome: notificar finalizacao de agendamentos expirados
+	ator: sistema
+	entrada: [idAgendamento, ...]
+	saida: [idAgendamento, ...]
+	proximo: null
+	
+	ID14
+	tipo: event, action
+	nome: cancelar agendamento
+	ator: cliente
+	entrada: idAgendamento
+	saida: idAgendamento
+	proximo: ID15
+	
+	ID15
+	tipo: task
+	nome: cancelar agendamento
+	ator: cliente
+	entrada: idAgendamento
+	saida: idAgendamento
+	proximo: ID16
+	
+	ID16
+	tipo: event, send message
+	nome: notificar cancelamento de agendamento
+	ator: sistema
+	entrada: idAgendamento
+	saida: idAgendamento
+	proximo: null
+	
+	ID17
+	tipo: event, action
+	nome: cancelar disponibilidade
+	ator: fornecedor
+	entrada: {gui:{dtHrInicial, dtHrFinal}}
+	saida: [idAgendamento, ...]
+	proximo: ID18
+	
+	ID18
+	tipo: event, send message
+	nome: notificar indisponibilidade
+	ator: sistema
+	entrada: [idAgendamento, ...]
+	saida: [idAgendamento, ...]
+	proximo: null
+	

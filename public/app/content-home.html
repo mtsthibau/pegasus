@@ -1,0 +1,127 @@
+<!------------------------- Corpo da Página -------------------->
+<div class="col-md-12 content-home" ng-controller="contentHomeCtrl as c">
+
+    <!---------------------------BANNER----------------------->
+    <div class="col-md-12 slide" ng-controller="slideitbannerCtrl">
+        <div id="slider1" slideitbanner="banners"></div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    </div>
+    <!------------------- E-Mail Marketing ------------------->
+    <div class="col-md-12 col-sm-12  col-xs-12 email-marketing">
+        <!--<img src="../img/selo1.png" class="icone-selo col-xs-12"/>-->
+        <img src="../img/mail-512.png" class="col-md-2 img-responsive icone-envelope"/>
+
+        <div class="col-sm-12 col-md-3 convite-email-marketing">
+            <h4> Assine nossa Newsletter</h4>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xs-12" id="mc_embed_signup">
+            <form action="//sisloc.us11.list-manage.com/subscribe/post?u=ce4851589b64d66080106845e&amp;id=151935c607"
+                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                  class="validate"
+                  target="_blank" novalidate>
+
+                <div class="col-sm-12 col-xs-12" id="mc_embed_signup_scroll">
+                    <input type="email" value="" name="EMAIL" class="form-control input-email-marketing"
+                           id="mce-EMAIL" required>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                </div>
+            </form>
+        </div>
+        <button type="submit" value="Enviar!" name="subscribe" id="mc-embedded-subscribe"
+                class="col-md-3 col-xs-12 col-sm-12 btn-orange-lg"><span class="fa fa-paper-plane"></span> Assinar
+        </button>
+    </div>
+    <div class="col-md-12 col-xs-12">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="c in c.destaques">
+                <div class="thumbnail">
+                    <img ng-src="../IMG/{{c.data.foto}}" class="img-responsive" alt="Transportadores">
+
+                    <div class="caption">
+                        <h3>{{c.data.nome}}</h3>
+
+                        <p>{{c.data.descricao}}</p>
+
+                        <p><a href="" class="btn btn-orange" role="button">Veja mais</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------- Produtos ---------->
+        <!--<div class="col-md-12 hidden-sm hidden-xs produtos">-->
+        <!--<section class="produtos-em-destaque" ng-controller="slideitdestaqueCtrl">-->
+        <!--<div class="col-md-12 col-xs-12 lista-de-produtos">-->
+        <!--<div class="titulo-sessao"><h1></h1></div>-->
+        <!--<div>-->
+        <!--<div id="slider2" slideitdestaque="destaques">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</section>-->
+        <!--</div>-->
+    </div>
+</div>
+<!-------------------------- Rodapé ----------------------------->
+<div class="col-lg-12  col-md-12 col-xs-12 barra-rodape">
+    <!--ENDEREÇOS E REDES SOCIAIS-->
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 endereco">
+        <br>
+
+        <h3><span class="glyphicon glyphicon-map-marker"></span> Encontre a Pegasus</h3>
+        <hr>
+        <br/>
+
+        <p><strong>Belo Horizonte - MG</strong><br/>
+            Rua Plêiades, 451, Santa Lúcia <br/> 30360-190 <br/><br/>
+            <strong>Matheus:</strong> +55 31 9999-9999 </p>
+
+        <p><strong>Jefferson:</strong> +55 31 9999-9999 </p>
+        <br/>
+        <br/>
+        <br/>
+        <a href="" class="btn btn-default btn-lg fa fa-facebook fa-3x btn-social"></a>
+        <a href="" class="btn btn-default btn-lg fa fa-linkedin fa-3x btn-social"></a>
+        <a href=""
+           class="btn btn-default btn-lg fa fa-youtube-play fa-3x btn-social"></a>
+        <a href=""
+           class="btn btn-default btn-lg fa fa-instagram fa-3x btn-social"></a>
+        <br>
+    </div>
+
+    <!------------------MENU-------------------->
+    <div class="col-lg-3 col-md-3 col-xs-12 institucional">
+        <br>
+
+        <h3><span class="glyphicon glyphicon-cloud"></span> Pegasus</h3>
+        <hr>
+        <h4><a href="" style="color:#FFFFFF"> Institucional</a></h4>    <br>
+        <h4><a href="" style="color:#FFFFFF"> Produtos Pegasus</a></h4>    <br>
+        <h4><a href="" style="color:#FFFFFF"> Pegasus no Smartphone</a></h4>    <br>
+        <h4><a href="" style="color:#FFFFFF"> Trabalhe conosco</a></h4><br>
+
+    </div>
+
+    <!-----------------Menu de serviços------------------------------>
+    <div class="caixa-rodape col-xs-12 col-md-3">
+        <div class="col-lg-3 col-md-3 col-xs-12 servico">
+            <br>
+
+            <h3><span class="glyphicon glyphicon-wrench"></span> Serviços</h3>
+            <hr>
+            <h4><a href="#sac" style="color:#FFFFFF"> SAC Pegasus</a></h4><br>
+            <h4><a href="#termo-uso" style="color:#FFFFFF"> Termo de uso</a></h4><br>
+            <h4><a href="#politica-privacidade" style="color:#FFFFFF"> Política de Privacidade</a></h4><br>
+            <h4><a href="" style="color:#FFFFFF"> Conheça o Portal Pegasus</a></h4><br>
+            <ul class="list-group">
+            </ul>
+        </div>
+
+        <!---------------API FACEBOOK-------------------------------->
+        <div class="col-lg-3 col-md-3">
+            <!--------CRIAR FACEBOOK----->
+        </div>
+    </div>
+</div>

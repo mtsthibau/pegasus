@@ -1,0 +1,88 @@
+<div class="col-md-12" ng-controller="contentAdmnEntHistoricoCtrl as c">
+
+    <div sidebaradmadmin="items" ng-controller="sidebarAdmEntCtrl"></div>
+
+    <div class="col-md-9">
+        <h2>Lista de Historicos</h2>
+
+        <div class="panel panel-default">
+            <!-- Table -->
+            <table class="table">
+                <tr>
+                    <td class="col-lg-1 col-md-1"><b>#</b></td>
+                    <td class="col-lg-5 col-md-5"><b>Entregador</b></td>
+                    <td class="col-lg-4 col-md-4 hidden-sm hidden-xs"><b>Preço</b></td>
+                    <td class="col-lg-2 col-md-4 hidden-sm hidden-xs"><b>Data</b></td>
+                </tr>
+                <tr ng-repeat="b in c.historicos | orderBy:'data.nome'">
+                    <td class="col-lg-1 col-md-1"><b>{{$index + 1}}</b></td>
+                    <td class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+                        <button class="btn btn-link" type="button" data-toggle="modal"
+                                data-target="#detalhes" data-whatever="detalhes">
+                            {{b.data.titulo | limitTo:60}}
+                        </button>
+                    </td>
+                    <td class="col-lg-4 col-md-4 hidden-sm hidden-xs">Preço</td>
+                    <td class="col-lg-2 col-md-4 hidden-sm hidden-xs">Data</td>
+                </tr>
+            </table>
+        </div>
+
+        <!------------------------------CADASTRO---------------------------->
+        <div class="modal fade" id="detalhes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title">Cadastrar - {{c.novoHistorico.data.titulo | limitTo:50}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form name="historico" novalidate>
+                            <div class="col-lg-12">
+                                <table class="table">
+                                    <tr>
+                                        <td class="col-lg-1 col-md-1"><b>#</b></td>
+                                        <td class="col-lg-5 col-md-5"><b>Entregador</b></td>
+                                        <td class="col-lg-4 col-md-4 hidden-sm hidden-xs"><b>Preço</b></td>
+                                        <td class="col-lg-2 col-md-4 hidden-sm hidden-xs"><b>Data</b></td>
+                                    </tr>
+                                    <tr ng-repeat="b in c.historicos | orderBy:'data.nome'">
+                                        <td class="col-lg-1 col-md-1"><b>{{$index + 1}}</b></td>
+                                        <td class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+                                            <button class="btn btn-link" type="button" data-toggle="modal"
+                                                    data-target="#detalhes" data-whatever="detalhes">
+                                                {{b.data.titulo | limitTo:60}}
+                                            </button>
+                                        </td>
+                                        <td class="col-lg-4 col-md-4 hidden-sm hidden-xs">Preço</td>
+                                        <td class="col-lg-2 col-md-4 hidden-sm hidden-xs">Data</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                        <div class="">
+                            <blockquote class="blockquote">
+                                <footer>Detalhes</footer>
+                            </blockquote>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button class="btn-white" data-dismiss="modal"> Sair</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-10 col-xs-12" style="margin-bottom: 265px;"></div>
+
+<script>
+    $('#detalhes').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>

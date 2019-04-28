@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="col-md-3 col-xs-12 filtros-pesquisa" ng-controller="sidebarFiltrosCtrl as c">
+        <div sidebar-filtros></div>
+
+
+    </div>
+
+    <div class="dropdown ordenar-por">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            Ordenar por:
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu ordenar-por-item" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Menor Preço</a></li>
+            <li><a href="#">Maior Preço</a></li>
+            <li><a href="#">Produtos A-Z</a></li>
+            <li><a href="#">Mais Novos</a></li>
+            <li><a href="#">Menos Novos</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9" ng-controller="resultadoPesquisaCtrl as c">
+
+        <div class="lista-produtos-pesquisa" resultadopesquisa="produtos">
+        </div>
+    </div>
+</div>

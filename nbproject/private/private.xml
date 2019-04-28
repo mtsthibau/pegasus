@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>web/views/adm-admin-admin.jsp</url>
+            <bookmark id="2">
+                <name/>
+                <line>57</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/servlets/admParametros.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>48</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/ObterRotaRet.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/views/adm-entr-post-rep.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/views/scripts/adm-admin-admin.js</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/finalEntrega.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/public/content-ranking.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/iniciarColeta.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/modelo/dao/PostsDAO.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/views/adm-entr-rota-ret.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/emailReportar.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/backlog</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/public/content-login.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/realEntrega.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/public/content-avaliar-entr.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/modelo/dao/RemDAO.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/views/scripts/adm-entr-rota-ret.js</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/iniciarEntrega.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/LogonServlet.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/modelo/dao/userDAO.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/avalEntrConf.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/web/views/adm-entr-rota-entr.jsp</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/servlets/avalEntregador.java</file>
+            <file>file:/C:/Users/matheus/Documents/NetBeansProjects/Pegasus/src/java/modelo/dao/EntrDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
